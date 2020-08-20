@@ -1,4 +1,4 @@
-# flutter_document_scanner
+# document_scanner
 
 A plugin for Flutter apps that adds document scanning functionality on Android.
 

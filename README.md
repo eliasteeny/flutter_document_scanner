@@ -2,8 +2,25 @@
 
 A plugin for Flutter apps that adds document scanning functionality on Android.
 
-## Getting Started
+## Warning
+ Working only on ios for now
+#
 
+## Setup
+
+### IOS
+
+Add a boolean property to the app's Info.plist file with the key io.flutter.embedded_views_preview and the value true to enable embedded views preview.
+
+    <key>io.flutter.embedded_views_preview</key>
+    <true/>
+
+Add a String property to the app's Info.plist file with the key NSCameraUsageDescription and the value as the description for why your app needs camera access.
+
+	<key>NSCameraUsageDescription</key>
+	<string>Camera Permission Description</string>
+
+### Android
 TBD
 
 ## How to use ?

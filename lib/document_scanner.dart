@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io' show Platform;
 
 import 'package:document_scanner/scannedImage.dart';
 import 'package:flutter/material.dart';
@@ -52,8 +53,11 @@ class DocumentScanner extends StatefulWidget {
 class _DocState extends State<DocumentScanner> {
   @override
   void initState() {
+    print("initializing state");
     widget.channel.setMethodCallHandler((MethodCall call) {
+      print("on method call handler");
       if (call.method == "onPictureTaken") {
+        print("on document scanned with args : " + call.arguments.toString());
         Map<String, dynamic> argsAsMap =
             Map<String, dynamic>.from(call.arguments);
 
@@ -65,11 +69,25 @@ class _DocState extends State<DocumentScanner> {
 
   @override
   Widget build(BuildContext context) {
-    return AndroidView(
-      viewType: "document_scanner",
-      creationParamsCodec: const StandardMessageCodec(),
-      creationParams: getParams(),
-    );
+    if (Platform.isAndroid) {
+      return AndroidView(
+        viewType: "document_scanner",
+        creationParamsCodec: const StandardMessageCodec(),
+        creationParams: getParams(),
+      );
+    } else if (Platform.isIOS) {
+      print("platform ios");
+      return UiKitView(
+        onPlatformViewCreated: (int numre) {
+          print("native platform view created : ios : " + numre.toString());
+        },
+        viewType: "document_scanner",
+        creationParams: getParams(),
+        creationParamsCodec: const StandardMessageCodec(),
+      );
+    } else {
+      throw ("Current Platform is not supported");
+    }
   }
 
   Map<String, dynamic> getParams() {
@@ -82,6 +100,7 @@ class _DocState extends State<DocumentScanner> {
       "noGrayScale": widget.noGrayScale,
       "brightness": widget.brightness,
       "contrast": widget.contrast,
+      "saturation": widget.saturation,
     };
     Map<String, dynamic> nonNullParams = {};
     allParams.forEach((key, value) {

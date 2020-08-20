@@ -1,12 +1,15 @@
-//
-//  DocumentScannerFactory.h
-//  Pods
-//
-//  Created by elias teeny on 8/20/20.
-//
+#import <Flutter/Flutter.h>
+#import "DocumentScannerView.h"
 
-#ifndef DocumentScannerFactory_h
-#define DocumentScannerFactory_h
+@interface DocumentScannerFactory : NSObject <FlutterPlatformViewFactory>
+- (instancetype)initWithRegistrar:(NSObject<FlutterPluginRegistrar> *)registrar;
+@end
 
 
-#endif /* DocumentScannerFactory_h */
+@interface ScannerController :  NSObject < FlutterPlatformView>
+@property (strong, nonatomic) DocumentScannerView *scannerView;
+-(instancetype)initWithFrame:(CGRect)frame
+              viewIdentifier:(int64_t)viewId
+                   arguments:(id _Nullable)args
+                   registrar:(NSObject<FlutterPluginRegistrar>*)registrar ;
+@end

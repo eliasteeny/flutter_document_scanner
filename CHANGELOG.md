@@ -1,3 +1,7 @@
+## 0.0.3
+
+* added android instructions
+
 ## 0.0.2
 
 * added IOS support

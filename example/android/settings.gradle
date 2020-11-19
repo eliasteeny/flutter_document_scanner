@@ -1,4 +1,4 @@
-include ':app', ':openCVLibrary310'
+include ':app'
 
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 

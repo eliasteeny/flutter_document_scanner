@@ -1,1 +1,2 @@
+//include ':openCVLibrary310'//include ':openCVLibrary310'
 rootProject.name = 'document_scanner'

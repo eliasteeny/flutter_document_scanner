@@ -1,3 +1,7 @@
+## 0.0.4
+
+* made the initial setup for android much easier
+
 ## 0.0.3
 
 * added android instructions

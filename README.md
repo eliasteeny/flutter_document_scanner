@@ -9,6 +9,8 @@ A plugin for Flutter apps that adds document scanning functionality on Android.
 
 ## Setup
 
+Handle camera access permission
+
 ### **IOS**
 
 Add a boolean property to the app's Info.plist file with the key io.flutter.embedded_views_preview and the value true to enable embedded views preview.
@@ -23,11 +25,9 @@ Add a String property to the app's Info.plist file with the key NSCameraUsageDes
 
 ### **Android**
 
-Install flutter_plugin_android_lifecycle plugin : https://pub.dev/packages/flutter_plugin_android_lifecycle/install
+minSdkVersion should be at least 19
 
-Download openCVLibrary310 and import it as a module through Android Studio : https://drive.google.com/file/d/1wfPWNZfXEBWxOtDwYCdQpec5KgEAEQkO/view?usp=sharing
 
-Don't forget to allow camera access permission
 
 ## How to use ?
 

@@ -1,56 +1,43 @@
-// To parse this JSON data, do
-//
-//     final scannedImage = scannedImageFromJson(jsonString);
+import 'dart:io';
 
-import 'dart:convert';
-
-ScannedImage scannedImageFromJson(String str) =>
-    ScannedImage.fromMap(json.decode(str));
-
-String scannedImageToJson(ScannedImage data) => json.encode(data.toMap());
+/// rectangleCoordinates : contains the coordinates of the scanned rectangle from the whole image
+/// croppedImage : the image file location of the scanned rectangle
+/// initialImage : the image file location of the whole image
+/// getScannedDocumentAsFile() : returns the image of the scanned rectangle as a file
 
 class ScannedImage {
   RectangleCoordinates rectangleCoordinates;
   String croppedImage;
-  int width;
-  String initialImage;
-  int height;
 
-  ScannedImage({
+  String initialImage;
+
+  ScannedImage._constructor({
     this.rectangleCoordinates,
     this.croppedImage,
-    this.width,
     this.initialImage,
-    this.height,
   });
 
-  factory ScannedImage.fromMap(Map<String, dynamic> json) => ScannedImage(
+  factory ScannedImage.fromMap(Map<String, dynamic> json) =>
+      ScannedImage._constructor(
         rectangleCoordinates: json["rectangleCoordinates"] == null
             ? null
             : RectangleCoordinates.fromMap(json["rectangleCoordinates"]),
         croppedImage:
             json["croppedImage"] == null ? null : json["croppedImage"],
-        width: json["width"] == null ? null : json["width"],
         initialImage:
             json["initialImage"] == null ? null : json["initialImage"],
-        height: json["height"] == null ? null : json["height"],
       );
 
-  Map<String, dynamic> toMap() => {
-        "rectangleCoordinates":
-            rectangleCoordinates == null ? null : rectangleCoordinates.toMap(),
-        "croppedImage": croppedImage == null ? null : croppedImage,
-        "width": width == null ? null : width,
-        "initialImage": initialImage == null ? null : initialImage,
-        "height": height == null ? null : height,
-      };
+  File getScannedDocumentAsFile() => File.fromUri(
+        Uri.parse(croppedImage),
+      );
 }
 
 class RectangleCoordinates {
-  BottomLeft bottomLeft;
-  BottomLeft bottomRight;
-  BottomLeft topLeft;
-  BottomLeft topRight;
+  RectanglePoint bottomLeft;
+  RectanglePoint bottomRight;
+  RectanglePoint topLeft;
+  RectanglePoint topRight;
 
   RectangleCoordinates({
     this.bottomLeft,
@@ -63,42 +50,30 @@ class RectangleCoordinates {
       RectangleCoordinates(
         bottomLeft: json["bottomLeft"] == null
             ? null
-            : BottomLeft.fromMap(json["bottomLeft"]),
+            : RectanglePoint.fromMap(json["bottomLeft"]),
         bottomRight: json["bottomRight"] == null
             ? null
-            : BottomLeft.fromMap(json["bottomRight"]),
+            : RectanglePoint.fromMap(json["bottomRight"]),
         topLeft: json["topLeft"] == null
             ? null
-            : BottomLeft.fromMap(json["topLeft"]),
+            : RectanglePoint.fromMap(json["topLeft"]),
         topRight: json["topRight"] == null
             ? null
-            : BottomLeft.fromMap(json["topRight"]),
+            : RectanglePoint.fromMap(json["topRight"]),
       );
-
-  Map<String, dynamic> toMap() => {
-        "bottomLeft": bottomLeft == null ? null : bottomLeft.toMap(),
-        "bottomRight": bottomRight == null ? null : bottomRight.toMap(),
-        "topLeft": topLeft == null ? null : topLeft.toMap(),
-        "topRight": topRight == null ? null : topRight.toMap(),
-      };
 }
 
-class BottomLeft {
+class RectanglePoint {
   int x;
   int y;
 
-  BottomLeft({
+  RectanglePoint({
     this.x,
     this.y,
   });
 
-  factory BottomLeft.fromMap(Map<String, dynamic> json) => BottomLeft(
+  factory RectanglePoint.fromMap(Map<String, dynamic> json) => RectanglePoint(
         x: json["x"] == null ? null : json["x"],
         y: json["y"] == null ? null : json["y"],
       );
-
-  Map<String, dynamic> toMap() => {
-        "x": x == null ? null : x,
-        "y": y == null ? null : y,
-      };
 }

@@ -1,11 +1,10 @@
 # document_scanner
 
-A plugin for Flutter apps that adds document scanning functionality on Android.
+A platform view plugin for Flutter apps that adds document scanning functionality on Android/IOS.
 
 ## Warning
  Document Scanner customization options aren't working for now
 
-#
 
 ## Setup
 
@@ -41,15 +40,18 @@ import 'package:document_scanner/document_scanner.dart';
 
 then use it as a widget:
 ```
+File scannedDocument;
+
 DocumentScanner(
-    onPictureTaken: (String image) {
-        print("document : " + image);
+    onDocumentScanned: (ScannedImage scannedImage) {
+        print("document : " + scannedImage.croppedImage);
+        scannedDocument = scannedImage.getScannedDocumentAsFile();
     },
                           
 )
 ```
 
-#
+
 
 ## Contributing
 
@@ -61,7 +63,7 @@ DocumentScanner(
 
 -  Create a new pull request.
 
-#
+
 
 ## License
 This project is licensed under the MIT License - see the LICENSE.md file for details

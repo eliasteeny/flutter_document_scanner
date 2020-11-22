@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'dart:async';
 
-import 'package:flutter/services.dart';
 import 'package:document_scanner/document_scanner.dart';
 
 void main() => runApp(MyApp());
@@ -14,11 +12,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String imageLocation;
-  bool enableTorch;
+  File scannedDocument;
+
   @override
   void initState() {
-    enableTorch = false;
     super.initState();
   }
 
@@ -29,41 +26,30 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
-        floatingActionButton: FloatingActionButton(
-            child: Icon(!enableTorch ? Icons.flash_on : Icons.flash_off),
-            onPressed: () {
-              setState(() {
-                enableTorch = !enableTorch;
-              });
-            }),
         body: Stack(
           children: <Widget>[
             Column(
               children: <Widget>[
                 Expanded(
-                  child: imageLocation != null
+                  child: scannedDocument != null
                       ? Image(
-                          image:
-                              FileImage(File.fromUri(Uri.file(imageLocation))))
+                          image: FileImage(scannedDocument),
+                        )
                       : DocumentScanner(
-                          onPictureTaken: (String image) {
-                            print("document : " + image);
+                          onDocumentScanned: (ScannedImage scannedImage) {
+                            print("document : " + scannedImage.croppedImage);
 
                             setState(() {
-                              imageLocation = image.replaceRange(0, 7, "");
+                              scannedDocument =
+                                  scannedImage.getScannedDocumentAsFile();
                               // imageLocation = image;
                             });
-
-                            print("document : " + imageLocation);
                           },
-                          brightness: 5,
-                          contrast: 1.3,
-                          enableTorch: enableTorch,
                         ),
                 ),
               ],
             ),
-            imageLocation != null
+            scannedDocument != null
                 ? Positioned(
                     bottom: 20,
                     left: 0,
@@ -72,7 +58,7 @@ class _MyAppState extends State<MyApp> {
                         child: Text("retry"),
                         onPressed: () {
                           setState(() {
-                            imageLocation = null;
+                            scannedDocument = null;
                           });
                         }),
                   )

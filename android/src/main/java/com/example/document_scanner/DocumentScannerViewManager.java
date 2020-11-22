@@ -98,7 +98,7 @@ uiThreadHandler.postAtFrontOfQueue(runnable );
         if(params.containsKey("documentAnimation")){
             documentAnimation =(boolean) params.get("documentAnimation");
         }else{
-            documentAnimation = false;
+            documentAnimation = true;
         }
 
         view.setDocumentAnimation(documentAnimation);

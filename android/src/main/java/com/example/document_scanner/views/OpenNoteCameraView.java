@@ -536,7 +536,7 @@ public class OpenNoteCameraView extends JavaCameraView implements PictureCallbac
     }
 
     public void sendImageProcessorMessage(String messageText, Object obj) {
-        Log.d(TAG, "sending message to ImageProcessor: " + messageText + " - " + obj.toString());
+        // Log.d(TAG, "sending message to ImageProcessor: " + messageText + " - " + obj.toString());
         Message msg = mImageProcessor.obtainMessage();
         msg.obj = new OpenNoteMessage(messageText, obj);
         mImageProcessor.sendMessage(msg);
@@ -655,12 +655,13 @@ public class OpenNoteCameraView extends JavaCameraView implements PictureCallbac
         boolean isIntent = false;
         Uri fileUri = null;
         String folderName = "documents";
-        File folder = new File(Environment.getExternalStorageDirectory().toString() + "/" + folderName);
+
+        File folder = new File(mContext.getCacheDir().toString() + "/" + folderName);
         if (!folder.exists()) {
             folder.mkdirs();
             Log.d(TAG, "wrote: created folder " + folder.getPath());
         }
-        fileName = Environment.getExternalStorageDirectory().toString() + "/" + folderName + "/" + UUID.randomUUID()
+        fileName = mContext.getCacheDir().toString() + "/" + folderName + "/" + UUID.randomUUID()
                 + ".jpg";
 
         Mat endDoc = new Mat(Double.valueOf(doc.size().width).intValue(), Double.valueOf(doc.size().height).intValue(),
@@ -694,6 +695,8 @@ public class OpenNoteCameraView extends JavaCameraView implements PictureCallbac
             data.put("croppedImage", "file://" + fileName);
             data.put("initialImage", "file://" + initialFileName);
             data.put("rectangleCoordinates", scannedDocument.previewPointsAsHash());
+
+
 
             this.listener.onPictureTaken(data);
         }

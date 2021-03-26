@@ -68,7 +68,19 @@ class _DocState extends State<DocumentScanner> {
       Map<String, dynamic> argsAsMap =
           Map<String, dynamic>.from(call.arguments);
 
-      widget.onDocumentScanned(ScannedImage.fromMap(argsAsMap));
+      ScannedImage scannedImage = ScannedImage.fromMap(argsAsMap);
+
+      // ScannedImage scannedImage = ScannedImage(
+      //     croppedImage: argsAsMap["croppedImage"],
+      //     initialImage: argsAsMap["initialImage"]);
+
+      // print("scanned image decoded");
+      // print(scannedImage.toJson());
+
+      if (scannedImage.croppedImage != null) {
+        // print("scanned image not null");
+        widget.onDocumentScanned(scannedImage);
+      }
     }
 
     return;

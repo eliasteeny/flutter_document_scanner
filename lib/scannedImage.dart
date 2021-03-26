@@ -1,79 +1,112 @@
+import 'dart:convert';
+
 import 'dart:io';
 
-/// rectangleCoordinates : contains the coordinates of the scanned rectangle from the whole image
-/// croppedImage : the image file location of the scanned rectangle
-/// initialImage : the image file location of the whole image
-/// getScannedDocumentAsFile() : returns the image of the scanned rectangle as a file
-
 class ScannedImage {
-  RectangleCoordinates rectangleCoordinates;
-  String croppedImage;
-
-  String initialImage;
-
-  ScannedImage._constructor({
-    this.rectangleCoordinates,
+  ScannedImage({
+    // this.rectangleCoordinates,
     this.croppedImage,
+    this.width,
     this.initialImage,
+    this.height,
   });
 
-  factory ScannedImage.fromMap(Map<String, dynamic> json) =>
-      ScannedImage._constructor(
-        rectangleCoordinates: json["rectangleCoordinates"] == null
-            ? null
-            : RectangleCoordinates.fromMap(json["rectangleCoordinates"]),
+  // RectangleCoordinates rectangleCoordinates;
+  String croppedImage;
+  int width;
+  String initialImage;
+  int height;
+
+  factory ScannedImage.fromJson(String str) =>
+      ScannedImage.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ScannedImage.fromMap(Map<String, dynamic> json) => ScannedImage(
+        // rectangleCoordinates: json["rectangleCoordinates"] == null
+        //     ? null
+        //     : RectangleCoordinates.fromMap(json["rectangleCoordinates"]),
         croppedImage:
             json["croppedImage"] == null ? null : json["croppedImage"],
+        width: json["width"] == null ? null : json["width"],
         initialImage:
             json["initialImage"] == null ? null : json["initialImage"],
+        height: json["height"] == null ? null : json["height"],
       );
+
+  Map<String, dynamic> toMap() => {
+        // "rectangleCoordinates": rectangleCoordinates == null ? null : rectangleCoordinates.toMap(),
+        "croppedImage": croppedImage == null ? null : croppedImage,
+        "width": width == null ? null : width,
+        "initialImage": initialImage == null ? null : initialImage,
+        "height": height == null ? null : height,
+      };
 
   File getScannedDocumentAsFile() => File.fromUri(
         Uri.parse(croppedImage),
       );
 }
 
-class RectangleCoordinates {
-  RectanglePoint bottomLeft;
-  RectanglePoint bottomRight;
-  RectanglePoint topLeft;
-  RectanglePoint topRight;
+// class RectangleCoordinates {
+//   RectangleCoordinates({
+//     this.bottomLeft,
+//     this.bottomRight,
+//     this.topLeft,
+//     this.topRight,
+//   });
 
-  RectangleCoordinates({
-    this.bottomLeft,
-    this.bottomRight,
-    this.topLeft,
-    this.topRight,
-  });
+//   Corner bottomLeft;
+//   Corner bottomRight;
+//   Corner topLeft;
+//   Corner topRight;
 
-  factory RectangleCoordinates.fromMap(Map<String, dynamic> json) =>
-      RectangleCoordinates(
-        bottomLeft: json["bottomLeft"] == null
-            ? null
-            : RectanglePoint.fromMap(json["bottomLeft"]),
-        bottomRight: json["bottomRight"] == null
-            ? null
-            : RectanglePoint.fromMap(json["bottomRight"]),
-        topLeft: json["topLeft"] == null
-            ? null
-            : RectanglePoint.fromMap(json["topLeft"]),
-        topRight: json["topRight"] == null
-            ? null
-            : RectanglePoint.fromMap(json["topRight"]),
-      );
-}
+//   factory RectangleCoordinates.fromJson(String str) =>
+//       RectangleCoordinates.fromMap(json.decode(str));
 
-class RectanglePoint {
-  int x;
-  int y;
+//   // String toJson() => json.encode(toMap());
 
-  RectanglePoint({
-    this.x,
-    this.y,
-  });
+//   factory RectangleCoordinates.fromMap(Map<String, dynamic> json) =>
+//       RectangleCoordinates(
+//         bottomLeft: json["bottomLeft"] == null
+//             ? null
+//             : Corner.fromMap(json["bottomLeft"]),
+//         bottomRight: json["bottomRight"] == null
+//             ? null
+//             : Corner.fromMap(json["bottomRight"]),
+//         topLeft:
+//             json["topLeft"] == null ? null : Corner.fromMap(json["topLeft"]),
+//         topRight:
+//             json["topRight"] == null ? null : Corner.fromMap(json["topRight"]),
+//       );
 
-  factory RectanglePoint.fromMap(Map<String, dynamic> json) => RectanglePoint(
-        x: json["x"] == null ? null : json["x"],
-        y: json["y"] == null ? null : json["y"],
-      );
-}
+//   // Map<String, dynamic> toMap() => {
+//   //     "bottomLeft": bottomLeft == null ? null : bottomLeft.toMap(),
+//   //     "bottomRight": bottomRight == null ? null : bottomRight.toMap(),
+//   //     "topLeft": topLeft == null ? null : topLeft.toMap(),
+//   //     "topRight": topRight == null ? null : topRight.toMap(),
+//   // };
+// }
+
+// class Corner {
+//   Corner({
+//     this.x,
+//     this.y,
+//   });
+
+//   double x;
+//   double y;
+
+//   factory Corner.fromJson(String str) => Corner.fromMap(json.decode(str));
+
+//   // String toJson() => json.encode(toMap());
+
+//   factory Corner.fromMap(Map<String, dynamic> json) => Corner(
+//         x: json["x"] == null ? null : json["x"],
+//         y: json["y"] == null ? null : json["y"],
+//       );
+
+//   // Map<String, dynamic> toMap() => {
+//   //     "x": x == null ? null : x,
+//   //     "y": y == null ? null : y,
+//   // };
+// }

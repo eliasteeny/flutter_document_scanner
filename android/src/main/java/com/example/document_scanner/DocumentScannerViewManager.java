@@ -69,6 +69,7 @@ public class DocumentScannerViewManager implements PlatformView {
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
+
                         channel.invokeMethod("onPictureTaken",data);
                     }
                 };
@@ -80,11 +81,12 @@ public class DocumentScannerViewManager implements PlatformView {
 
             @Override
             public void onPictureTaken(Map data) {
-//                Log.d("debug",data.toString());
+
                  Handler uiThreadHandler = new Handler(context.getMainLooper());
                  Runnable runnable = new Runnable() {
                      @Override
                      public void run() {
+                        
                        channel.invokeMethod("onPictureTaken",data);
                      }
                  };
@@ -98,7 +100,7 @@ uiThreadHandler.postAtFrontOfQueue(runnable );
         if(params.containsKey("documentAnimation")){
             documentAnimation =(boolean) params.get("documentAnimation");
         }else{
-            documentAnimation = true;
+            documentAnimation = false;
         }
 
         view.setDocumentAnimation(documentAnimation);

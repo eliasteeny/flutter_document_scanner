@@ -108,7 +108,7 @@ public class ImageProcessor extends Handler {
 
             String command = obj.getCommand();
 
-            Log.d(TAG, "Message Received: " + command + " - " + obj.getObj().toString());
+            // Log.d(TAG, "Message Received: " + command + " - " + obj.getObj().toString());
 
             if (command.equals("previewFrame")) {
                 processPreviewFrame((PreviewFrame) obj.getObj());
@@ -250,7 +250,7 @@ public class ImageProcessor extends Handler {
 
         Quadrilateral quad = getQuadrilateral(contours, inputRgba.size());
 
-        Log.i("DESENHAR", "Quad----->" + quad);
+        // Log.i("DESENHAR", "Quad----->" + quad);
 
         mPreviewPoints = null;
         mPreviewSize = inputRgba.size();
@@ -326,7 +326,7 @@ public class ImageProcessor extends Handler {
         int width = Double.valueOf(srcSize.width / ratio).intValue();
         Size size = new Size(width, height);
 
-        Log.i("COUCOU", "Size----->" + size);
+        // Log.i("COUCOU", "Size----->" + size);
         for (MatOfPoint c : contours) {
             MatOfPoint2f c2f = new MatOfPoint2f(c.toArray());
             double peri = Imgproc.arcLength(c2f, true);

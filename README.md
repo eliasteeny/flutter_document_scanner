@@ -51,7 +51,11 @@ DocumentScanner(
 )
 ```
 
+## Credits
 
+This is a React Native package implemented on Flutter.
+
+Reference to the React Native package : https://github.com/Michaelvilleneuve/react-native-document-scanner
 
 ## Contributing
 

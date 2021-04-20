@@ -738,7 +738,7 @@ public class OpenNoteCameraView extends JavaCameraView implements PictureCallbac
             mActivity.finish();
         } else {
             animateDocument(fileName, scannedDocument);
-            addImageToGallery(fileName, mContext);
+//            addImageToGallery(fileName, mContext);
         }
 
         // Record goal "PictureTaken"

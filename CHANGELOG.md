@@ -1,3 +1,7 @@
+## 0.1.2
+
+* Android : fixed a bug that was sometimes crashing the app after scanning the document.
+
 ## 0.1.1
 
 * Android : fixed a bug that caused **onDocumentScanned** getting called with a null document.

@@ -13,8 +13,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  File scannedDocument;
-  Future<PermissionStatus> cameraPermissionFuture;
+  File? scannedDocument;
+  Future<PermissionStatus>? cameraPermissionFuture;
 
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
             builder: (BuildContext context,
                 AsyncSnapshot<PermissionStatus> snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.data.isGranted)
+                if (snapshot.data!.isGranted)
                   return Stack(
                     children: <Widget>[
                       Column(
@@ -42,13 +42,13 @@ class _MyAppState extends State<MyApp> {
                           Expanded(
                             child: scannedDocument != null
                                 ? Image(
-                                    image: FileImage(scannedDocument),
+                                    image: FileImage(scannedDocument!),
                                   )
                                 : DocumentScanner(
                                     onDocumentScanned:
                                         (ScannedImage scannedImage) {
                                       print("document : " +
-                                          scannedImage.croppedImage);
+                                          scannedImage.croppedImage!);
 
                                       setState(() {
                                         scannedDocument = scannedImage

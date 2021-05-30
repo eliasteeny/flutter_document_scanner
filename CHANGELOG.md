@@ -1,3 +1,8 @@
+## 0.2.0
+* Migrated to null safety.
+* Added a bit of documentation.
+* Upgraded dependencies to the latest version.
+
 ## 0.1.2
 
 * Android : fixed a bug that was sometimes crashing the app after scanning the document.

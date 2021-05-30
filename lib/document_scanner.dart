@@ -9,9 +9,21 @@ export 'package:document_scanner/scannedImage.dart';
 
 const String _methodChannelIdentifier = 'document_scanner';
 
-/// onDocumentScanned gets called when the scanner successfully scans a rectangle (document)
-
+/// Document scanner Platform view.
+///
+/// Creates a platform specific (only Android and iOS) UI view that displays the device's camera and attempts to detect documents.
+/// When a document is detected, [onDocumentScanned] is called with an instance of [ScannedImage].
+/// The whole image is saved and it's url is returned as [scannedDocument.initialImage].
+/// The document is cropped and saved and it's url is returned as [scannedDocument.croppedImage].
+/// ```dart
+/// DocumentScanner(
+///  onDocumentScanned: (ScannedImage scannedImage) {
+///                        print("document : " + scannedImage.croppedImage!);
+///                      },
+///)
+/// ```
 class DocumentScanner extends StatefulWidget {
+  /// onDocumentScanned gets called when the scanner successfully scans a rectangle (document)
   final Function(ScannedImage) onDocumentScanned;
 
   // final bool documentAnimation;
@@ -31,7 +43,7 @@ class DocumentScanner extends StatefulWidget {
   // final bool noGrayScale;
 
   DocumentScanner({
-    @required this.onDocumentScanned,
+    required this.onDocumentScanned,
     // this.documentAnimation,
     // this.overlayColor,
     // this.detectionCountBeforeCapture,

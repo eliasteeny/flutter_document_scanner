@@ -26,7 +26,7 @@ class DocumentScanner extends StatefulWidget {
   /// onDocumentScanned gets called when the scanner successfully scans a rectangle (document)
   final Function(ScannedImage) onDocumentScanned;
 
-  // final bool documentAnimation;
+  final bool documentAnimation;
   // final String overlayColor;
   // final int detectionCountBeforeCapture;
   // final int detectionRefreshRateInMS;
@@ -40,11 +40,11 @@ class DocumentScanner extends StatefulWidget {
   // final bool saveInAppDocument;
   // final bool captureMultiple;
   // final bool manualOnly;
-  // final bool noGrayScale;
+  final bool noGrayScale;
 
   DocumentScanner({
     required this.onDocumentScanned,
-    // this.documentAnimation,
+    this.documentAnimation = true,
     // this.overlayColor,
     // this.detectionCountBeforeCapture,
     // this.detectionRefreshRateInMS,
@@ -58,7 +58,7 @@ class DocumentScanner extends StatefulWidget {
     // this.saveInAppDocument,
     // this.captureMultiple,
     // this.manualOnly,
-    // this.noGrayScale,
+    this.noGrayScale = true,
   });
 
   final MethodChannel _channel = const MethodChannel(_methodChannelIdentifier);
@@ -119,26 +119,27 @@ class _DocState extends State<DocumentScanner> {
   }
 
   Map<String, dynamic> _getParams() {
-    // Map<String, dynamic> allParams = {
-    //   "documentAnimation": widget.documentAnimation,
-    //   "overlayColor": widget.overlayColor,
-    //   "detectionCountBeforeCapture": widget.detectionCountBeforeCapture,
-    //   "enableTorch": widget.enableTorch,
-    //   "manualOnly": widget.manualOnly,
-    //   "noGrayScale": widget.noGrayScale,
-    //   "brightness": widget.brightness,
-    //   "contrast": widget.contrast,
-    //   "saturation": widget.saturation,
-    // };
+    Map<String, dynamic> allParams = {
+      "documentAnimation": widget.documentAnimation,
+      //   "overlayColor": widget.overlayColor,
+      //   "detectionCountBeforeCapture": widget.detectionCountBeforeCapture,
+      //   "enableTorch": widget.enableTorch,
+      //   "manualOnly": widget.manualOnly,
+      "noGrayScale": widget.noGrayScale,
+      //   "brightness": widget.brightness,
+      //   "contrast": widget.contrast,
+      //   "saturation": widget.saturation,
+    };
 
-    // Map<String, dynamic> nonNullParams = {};
-    // allParams.forEach((key, value) {
-    //   if (value != null) {
-    //     nonNullParams.addAll({key: value});
-    //   }
-    // });
+    Map<String, dynamic> nonNullParams = {};
+    allParams.forEach((key, value) {
+      if (value != null) {
+        nonNullParams.addAll({key: value});
+      }
+    });
 
-    // return nonNullParams;
-    return {};
+    return nonNullParams;
+    //hamed touch (all above lines commented but below)
+    //return {};
   }
 }

@@ -45,6 +45,8 @@ class _MyAppState extends State<MyApp> {
                                     image: FileImage(scannedDocument!),
                                   )
                                 : DocumentScanner(
+                                    documentAnimation: true,
+                                    noGrayScale: true,
                                     onDocumentScanned:
                                         (ScannedImage scannedImage) {
                                       print("document : " +

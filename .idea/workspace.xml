@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6367b72-d357-4b79-bdc8-fb7deca3dbe3" name="Default Changelist" comment="changes for noGrayscale (colored output)">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+    <list default="true" id="f6367b72-d357-4b79-bdc8-fb7deca3dbe3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/com/example/document_scanner/ImageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/example/document_scanner/ImageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/document_scanner.iml" beforeDir="false" afterPath="$PROJECT_DIR$/document_scanner.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/document_scanner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/document_scanner.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +47,14 @@
       <option name="presentableId" value="Default" />
       <updated>1622976546162</updated>
     </task>
+    <task id="LOCAL-00001" summary="changes for noGrayscale (colored output)">
+      <created>1623099209725</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1623099209726</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -62,33 +62,37 @@
     <option name="LAST_COMMIT_MESSAGE" value="changes for noGrayscale (colored output)" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="476" y="98" key="CommitChangelistDialog2" timestamp="1623099183080">
+    <state x="476" y="98" key="CommitChangelistDialog2" timestamp="1623099209325">
       <screen x="0" y="25" width="1920" height="1002" />
     </state>
-    <state x="476" y="98" key="CommitChangelistDialog2/0.25.1920.1002@0.25.1920.1002" timestamp="1623099183080" />
-    <state width="1769" height="270" key="GridCell.Tab.0.bottom" timestamp="1623098372365">
+    <state x="476" y="98" key="CommitChangelistDialog2/0.25.1920.1002@0.25.1920.1002" timestamp="1623099209325" />
+    <state width="1769" height="270" key="GridCell.Tab.0.bottom" timestamp="1623141640387">
       <screen x="0" y="25" width="1920" height="1002" />
     </state>
-    <state width="1769" height="270" key="GridCell.Tab.0.bottom/0.25.1920.1002@0.25.1920.1002" timestamp="1623098372365" />
-    <state width="1769" height="270" key="GridCell.Tab.0.center" timestamp="1623098372350">
+    <state width="1769" height="270" key="GridCell.Tab.0.bottom/0.25.1920.1002@0.25.1920.1002" timestamp="1623141640387" />
+    <state width="1769" height="270" key="GridCell.Tab.0.center" timestamp="1623141640384">
       <screen x="0" y="25" width="1920" height="1002" />
     </state>
-    <state width="1769" height="270" key="GridCell.Tab.0.center/0.25.1920.1002@0.25.1920.1002" timestamp="1623098372350" />
-    <state width="1769" height="270" key="GridCell.Tab.0.left" timestamp="1623098372341">
+    <state width="1769" height="270" key="GridCell.Tab.0.center/0.25.1920.1002@0.25.1920.1002" timestamp="1623141640384" />
+    <state width="1769" height="270" key="GridCell.Tab.0.left" timestamp="1623141640378">
       <screen x="0" y="25" width="1920" height="1002" />
     </state>
-    <state width="1769" height="270" key="GridCell.Tab.0.left/0.25.1920.1002@0.25.1920.1002" timestamp="1623098372341" />
-    <state width="1769" height="270" key="GridCell.Tab.0.right" timestamp="1623098372350">
+    <state width="1769" height="270" key="GridCell.Tab.0.left/0.25.1920.1002@0.25.1920.1002" timestamp="1623141640378" />
+    <state width="1769" height="270" key="GridCell.Tab.0.right" timestamp="1623141640385">
       <screen x="0" y="25" width="1920" height="1002" />
     </state>
-    <state width="1769" height="270" key="GridCell.Tab.0.right/0.25.1920.1002@0.25.1920.1002" timestamp="1623098372350" />
+    <state width="1769" height="270" key="GridCell.Tab.0.right/0.25.1920.1002@0.25.1920.1002" timestamp="1623141640385" />
     <state x="428" y="162" key="SettingsEditor" timestamp="1623098988675">
       <screen x="0" y="25" width="1920" height="1002" />
     </state>
     <state x="428" y="162" key="SettingsEditor/0.25.1920.1002@0.25.1920.1002" timestamp="1623098988675" />
-    <state x="658" y="318" key="Vcs.Push.Dialog.v2" timestamp="1623099039683">
+    <state x="658" y="318" key="Vcs.Push.Dialog.v2" timestamp="1623099255798">
       <screen x="0" y="25" width="1920" height="1002" />
     </state>
-    <state x="658" y="318" key="Vcs.Push.Dialog.v2/0.25.1920.1002@0.25.1920.1002" timestamp="1623099039683" />
+    <state x="658" y="318" key="Vcs.Push.Dialog.v2/0.25.1920.1002@0.25.1920.1002" timestamp="1623099255798" />
+    <state x="669" y="419" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1623099874896">
+      <screen x="0" y="25" width="1920" height="1002" />
+    </state>
+    <state x="669" y="419" key="git4idea.remote.GitConfigureRemotesDialog/0.25.1920.1002@0.25.1920.1002" timestamp="1623099874895" />
   </component>
 </project>

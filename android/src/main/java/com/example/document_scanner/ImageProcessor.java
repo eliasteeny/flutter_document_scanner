@@ -64,8 +64,7 @@ public class ImageProcessor extends Handler {
     private final Handler mUiHandler;
     private final OpenNoteCameraView mMainActivity;
     private boolean mBugRotate;
-   ///hamed touch (colorMode=false)
-    private boolean colorMode = true;
+    private boolean colorMode = false;
     private boolean filterMode = true;
     private double colorGain = 1; // contrast
     private double colorBias = 10; // bright
@@ -75,8 +74,7 @@ public class ImageProcessor extends Handler {
     private ResultPoint[] qrResultPoints;
     private int numOfSquares = 0;
     private int numOfRectangles = 10;
-  ///hamed touch (noGrayscale = false)
-    private boolean noGrayscale = true;
+    private boolean noGrayscale;
 
     public ImageProcessor(Looper looper, Handler uiHandler, OpenNoteCameraView mainActivity, Context context) {
         super(looper);
@@ -98,9 +96,8 @@ public class ImageProcessor extends Handler {
         this.colorGain = contrast;
     }
 
-    ///hamed touch (this.noGrayscale = grayscale)
     public void setRemoveGrayScale(boolean grayscale) {
-        this.noGrayscale = true;
+        this.noGrayscale = grayscale;
     }
 
     public void handleMessage(Message msg) {
@@ -413,9 +410,17 @@ public class ImageProcessor extends Handler {
     }
 
     private void enhanceDocument(Mat src) {
-        ///hamed touch Imgproc.cvtColor(src, src, Imgproc.COLOR_RGBA2GRAY);
-      //  Imgproc.cvtColor(src, src, imgpro.COLOR_RGBA);
+
+
+        // Imgproc.cvtColor(src, src, Imgproc.COLOR_RGBA2GRAY);
+        //src.convertTo(src, CvType.CV_8UC1, colorGain, colorBias);
+
+        if (!noGrayscale) {
+            Imgproc.cvtColor(src, src, Imgproc.COLOR_RGBA2GRAY);
+        }
         src.convertTo(src, CvType.CV_8UC1, colorGain, colorBias);
+
+
     }
 
     /**

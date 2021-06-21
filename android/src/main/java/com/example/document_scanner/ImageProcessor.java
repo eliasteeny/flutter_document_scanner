@@ -74,7 +74,7 @@ public class ImageProcessor extends Handler {
     private ResultPoint[] qrResultPoints;
     private int numOfSquares = 0;
     private int numOfRectangles = 10;
-    private boolean noGrayscale = false;
+    private boolean noGrayscale;
 
     public ImageProcessor(Looper looper, Handler uiHandler, OpenNoteCameraView mainActivity, Context context) {
         super(looper);
@@ -410,8 +410,17 @@ public class ImageProcessor extends Handler {
     }
 
     private void enhanceDocument(Mat src) {
-        Imgproc.cvtColor(src, src, Imgproc.COLOR_RGBA2GRAY);
+
+
+        // Imgproc.cvtColor(src, src, Imgproc.COLOR_RGBA2GRAY);
+        //src.convertTo(src, CvType.CV_8UC1, colorGain, colorBias);
+
+        if (!noGrayscale) {
+            Imgproc.cvtColor(src, src, Imgproc.COLOR_RGBA2GRAY);
+        }
         src.convertTo(src, CvType.CV_8UC1, colorGain, colorBias);
+
+
     }
 
     /**

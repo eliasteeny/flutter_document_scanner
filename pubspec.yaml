@@ -1,6 +1,6 @@
 name: document_scanner
 description: A plugin that creates a native platform view that scans documents, as a flutter widget.
-version: 0.2.0
+version: 0.2.1
 homepage: https://github.com/eliasteeny/flutter_document_scanner
 
 environment:

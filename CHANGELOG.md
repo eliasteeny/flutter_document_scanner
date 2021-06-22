@@ -1,3 +1,7 @@
+## 0.2.1
+* Android : added noGrayScale option.
+* Android : added opencv jnilibs through jitpack for reduced package size
+
 ## 0.2.0
 * Migrated to null safety.
 * Added a bit of documentation.

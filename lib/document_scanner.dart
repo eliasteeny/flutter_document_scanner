@@ -26,7 +26,7 @@ class DocumentScanner extends StatefulWidget {
   /// onDocumentScanned gets called when the scanner successfully scans a rectangle (document)
   final Function(ScannedImage) onDocumentScanned;
 
-  final bool documentAnimation;
+  // final bool documentAnimation;
   // final String overlayColor;
   // final int detectionCountBeforeCapture;
   // final int detectionRefreshRateInMS;
@@ -44,7 +44,7 @@ class DocumentScanner extends StatefulWidget {
 
   DocumentScanner({
     required this.onDocumentScanned,
-    this.documentAnimation = true,
+    // this.documentAnimation = true,
     // this.overlayColor,
     // this.detectionCountBeforeCapture,
     // this.detectionRefreshRateInMS,
@@ -120,7 +120,7 @@ class _DocState extends State<DocumentScanner> {
 
   Map<String, dynamic> _getParams() {
     Map<String, dynamic> allParams = {
-      "documentAnimation": widget.documentAnimation,
+      // "documentAnimation": widget.documentAnimation,
       //   "overlayColor": widget.overlayColor,
       //   "detectionCountBeforeCapture": widget.detectionCountBeforeCapture,
       //   "enableTorch": widget.enableTorch,
